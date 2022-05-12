@@ -21,7 +21,7 @@ const Forgotpassword = () => {
   const okHandler = () => {
     if (message === "Mail sent successfully") {
       setShow(false);
-      navigate("/");
+      navigate("/resetpassword");
     } else setShow(false);
   };
   return (

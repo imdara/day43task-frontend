@@ -4,16 +4,16 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const Resetpassword = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const id = searchParams.get("id");
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const id = searchParams.get("id");
   const [show, setShow] = useState(false);
-  const [user, setUser] = useState({ newPassword: "" });
+  const [user, setUser] = useState({ secretCode: "", newPassword: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      `https://imdarasday43task.herokuapp.com/reset?id=${id}`,
+      `https://imdarasday43task.herokuapp.com/reset?id=${user.secretCode}`,
       user
     );
     setMessage(res.data);
@@ -41,6 +41,13 @@ const Resetpassword = () => {
       </Modal>
       <Form onSubmit={submitHandler} id="resetpassword">
         <Form.Group className="mb-3">
+          <Form.Label>Secret code</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter secret code"
+            onChange={(e) => setUser({ ...user, secretCode: e.target.value })}
+            required
+          />
           <Form.Label>New password</Form.Label>
           <Form.Control
             type="password"
