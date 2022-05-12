@@ -48,7 +48,7 @@ const Forgotpassword = () => {
           />
         </Form.Group>
         <Button type="submit" variant="light">
-          Send reset link
+          Send reset code
         </Button>
       </Form>
     </Container>

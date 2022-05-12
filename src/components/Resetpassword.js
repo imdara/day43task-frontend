@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Container, Form, Button, Modal } from "react-bootstrap";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Resetpassword = () => {
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const id = searchParams.get("id");
   const [show, setShow] = useState(false);
   const [user, setUser] = useState({ secretCode: "", newPassword: "" });
   const [message, setMessage] = useState("");
@@ -44,7 +42,7 @@ const Resetpassword = () => {
           <Form.Label>Secret code</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter secret code"
+            placeholder="Enter code sent to your mail"
             onChange={(e) => setUser({ ...user, secretCode: e.target.value })}
             required
           />
