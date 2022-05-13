@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
-  const [user, setUser] = useState({ email: "", password: "" });
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const submitHandler = async (e) => {
@@ -38,6 +38,15 @@ const Signup = () => {
         </Modal.Footer>
       </Modal>
       <Form onSubmit={submitHandler} id="signup">
+        <Form.Group className="mb-3">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            onChange={(e) => setUser({ ...user, name: e.target.value })}
+            required
+          />
+        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
